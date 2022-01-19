@@ -18,11 +18,23 @@ public class MacyProducerServiceImpl implements MacyProducerService {
 	@Autowired
 	ProducerQueueXML producerXmlQueue;
 
+	// #Query to Produce Xml msg to rabbit queue
+	@Override
+	public ResponseEntity<String> produceXmlMsgToRabbitQ(FulfillmentOrder xmlMsgOrder) {
+		try {
+			producerXmlQueue.send(xmlMsgOrder);
+			return new ResponseEntity<>("XML produced Successfully", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>("XML producing Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 	// #Query to Produce Json msg to rabbit queue
 	@Override
-	public ResponseEntity<String> produceJsonMsg(OrderMsgProducerJson orderMessageJson) {
+	public ResponseEntity<String> produceJsonMsgToRabbitQ(OrderMsgProducerJson jsonMsgOrder) {
 		try {
-			producerJsonQueue.send(orderMessageJson);
+			producerJsonQueue.send(jsonMsgOrder);
 			return new ResponseEntity<>("Producer Produced successfull", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -30,14 +42,5 @@ public class MacyProducerServiceImpl implements MacyProducerService {
 		}
 	}
 
-	// #Query to Produce Xml msg to rabbit queue
-	public ResponseEntity<String> produceXmlMsg(FulfillmentOrder fulfillmentOrder) {
-		try {
-			producerXmlQueue.send(fulfillmentOrder);
-			return new ResponseEntity<>("XML produced Successfully", HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<>("XML producing Failed", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
+	
 }

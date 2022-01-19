@@ -7,8 +7,8 @@ import com.order.dto.xml.FulfillmentOrder;
 
 public interface MacyProducerService {
 
-	ResponseEntity<String> produceXmlMsg(FulfillmentOrder fulfillmentOrder);
+	ResponseEntity<String> produceXmlMsgToRabbitQ(FulfillmentOrder xmlOrder);
 
-	ResponseEntity<String> produceJsonMsg(OrderMsgProducerJson orderMessageJson);
+	ResponseEntity<String> produceJsonMsgToRabbitQ(OrderMsgProducerJson JsonOrder);
 
 }
