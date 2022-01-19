@@ -1,0 +1,16 @@
+server:
+  port: 2000
+
+spring.rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+
+spring:
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+queue:
+  name: macy-producer-queue
