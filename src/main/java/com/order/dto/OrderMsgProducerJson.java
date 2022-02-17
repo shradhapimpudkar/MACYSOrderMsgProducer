@@ -21,9 +21,9 @@ public class OrderMsgProducerJson implements Serializable {
 	@JsonProperty
 	private String command;
 
-	@ApiModelProperty(value = "temName of the OrderMsgProducer")
+	@ApiModelProperty(value = "itemName of the OrderMsgProducer")
 	@JsonProperty
-	private String temName;
+	private String itemName;
 
 	@ApiModelProperty(value = "itemDescription of the OrderMsgProducer")
 	@JsonProperty
@@ -65,13 +65,13 @@ public class OrderMsgProducerJson implements Serializable {
 	@JsonProperty
 	private String upcList;
 
-	public OrderMsgProducerJson(String messageName, String command, String temName, String itemDescription,
+	public OrderMsgProducerJson(String messageName, String command, String itemName, String itemDescription,
 			double itemLength, double itemWidth, double itemHeight, double itemWeight, String imagePathname,
 			String rfidTagged, int storageAttribute, String pickType, String upcList) {
 		super();
 		this.messageName = messageName;
 		this.command = command;
-		this.temName = temName;
+		this.itemName = itemName;
 		this.itemDescription = itemDescription;
 		this.itemLength = itemLength;
 		this.itemWidth = itemWidth;
@@ -84,14 +84,14 @@ public class OrderMsgProducerJson implements Serializable {
 		this.upcList = upcList;
 	}
 
-	public OrderMsgProducerJson(int id, String messageName, String command, String temName, String itemDescription,
+	public OrderMsgProducerJson(int id, String messageName, String command, String itemName, String itemDescription,
 			double itemLength, double itemWidth, double itemHeight, double itemWeight, String imagePathname,
 			String rfidTagged, int storageAttribute, String pickType, String upcList) {
 		super();
 		this.id = id;
 		this.messageName = messageName;
 		this.command = command;
-		this.temName = temName;
+		this.itemName = itemName;
 		this.itemDescription = itemDescription;
 		this.itemLength = itemLength;
 		this.itemWidth = itemWidth;
@@ -132,12 +132,14 @@ public class OrderMsgProducerJson implements Serializable {
 		this.command = command;
 	}
 
-	public String getTemName() {
-		return temName;
+
+
+	public String getItemName() {
+		return itemName;
 	}
 
-	public void setTemName(String temName) {
-		this.temName = temName;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
 	public String getItemDescription() {
@@ -222,11 +224,13 @@ public class OrderMsgProducerJson implements Serializable {
 
 	@Override
 	public String toString() {
-		return "OrderMsgProducer [messageName=" + messageName + ", command=" + command + ", temName=" + temName
-				+ ", itemDescription=" + itemDescription + ", itemLength=" + itemLength + ", itemWidth=" + itemWidth
-				+ ", itemHeight=" + itemHeight + ", itemWeight=" + itemWeight + ", imagePathname=" + imagePathname
-				+ ", rfidTagged=" + rfidTagged + ", storageAttribute=" + storageAttribute + ", pickType=" + pickType
-				+ ", upcList=" + upcList + "]";
+		return "OrderMsgProducerJson [id=" + id + ", messageName=" + messageName + ", command=" + command
+				+ ", itemName=" + itemName + ", itemDescription=" + itemDescription + ", itemLength=" + itemLength
+				+ ", itemWidth=" + itemWidth + ", itemHeight=" + itemHeight + ", itemWeight=" + itemWeight
+				+ ", imagePathname=" + imagePathname + ", rfidTagged=" + rfidTagged + ", storageAttribute="
+				+ storageAttribute + ", pickType=" + pickType + ", upcList=" + upcList + "]";
 	}
+
+	
 
 }
